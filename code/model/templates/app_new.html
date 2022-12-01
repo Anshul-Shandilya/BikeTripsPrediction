@@ -1,0 +1,280 @@
+<html>
+
+<head>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+    <title>Bike Trips Prediction</title>
+</head>
+
+<body>
+    <!-- Java Script -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+        integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+        crossorigin="anonymous"></script>
+
+
+    <!-- Navbar-->
+    <nav class="navbar navbar-dark bg-dark">
+        <span class="navbar-brand mb-0 h1">Bike Trips Predictions</span>
+    </nav>
+    <div class="container">
+        <br>
+        <!--Form-->
+        <form action="{{url_for('predict')}}" method="POST">
+            <fieldset>
+                <legend>Trips prediction Form</legend><br>
+                <div class="card card-body">
+                    <div class="form-group  row">
+                        <div class="col-sm-3">
+                            <label for="sex">City</label>
+                            <select class="form-control" id="city" name="city" required>
+                                <option disabled selected value> -- Select an Option -- </option>
+                                <option value="0">San Francisco</option>
+                                <option value="1">San Jose</option>
+                                <option value="2">Redwood</option>
+                                <option value="3">Mountain View</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="sex">Holiday</label>
+                            <select class="form-control" id="holiday" name="holiday" required>
+                                <option disabled selected value> -- Select an Option -- </option>
+                                <option value="0">False</option>
+                                <option value="1">True</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="sex">Business Day</label>
+                            <select class="form-control" id="business" name="business" required>
+                                <option disabled selected value> -- Select an Option -- </option>
+                                <option value="0">False</option>
+                                <option value="1">True</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="sex">Month</label>
+                            <select class="form-control" id="month" name="month" required>
+                                <option disabled selected value> -- Select an Option -- </option>
+                                <option value="1">January</option>
+                                <option value="2">Feburary</option>
+                                <option value="3">March</option>
+                                <option value="4">April</option>
+                                <option value="5">May</option>
+                                <option value="6">June</option>
+                                <option value="7">July</option>
+                                <option value="8">August</option>
+                                <option value="9">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="sex">Weekday</label>
+                            <select class="form-control" id="weekday" name="weekday" required>
+                                <option disabled selected value> -- Select an Option -- </option>
+                                <option value="0">False</option>
+                                <option value="1">True</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+
+
+
+                <div class="card card-body">
+                    <div class="form-group  row">
+
+                        <div class="col-sm">
+                            <label for="thalach">Maximum Temp (F)</label>
+                            <input type="number" class="form-control" id="maxt" name="maxt" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Mean Temp (F)</label>
+                            <input type="number" class="form-control" id="meant" name="meant" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Minimum Temp (F)</label>
+                            <input type="number" class="form-control" id="mint" name="mint" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Max Dew Point</label>
+                            <input type="number" class="form-control" id="maxd" name="maxd" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Mean Dew Point</label>
+                            <input type="number" class="form-control" id="meand" name="meand" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Min Dew Point</label>
+                            <input type="number" class="form-control" id="mind" name="mind" required>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="card card-body">
+                    <div class="form-group  row">
+                        <div class="col-sm">
+                            <label for="thalach">Maximum humidity</label>
+                            <input type="number" class="form-control" id="maxh" name="maxh" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Mean humidity</label>
+                            <input type="number" class="form-control" id="meanh" name="meanh" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Minimum humidity</label>
+                            <input type="number" class="form-control" id="minh" name="minh" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Max SL Pressure (inches)</label>
+                            <input type="number" class="form-control" id="maxp" name="maxp" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Mean SL Pressure (inches)</label>
+                            <input type="number" class="form-control" id="meanp" name="meanp" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Min SL Pressure (inches)</label>
+                            <input type="number" class="form-control" id="minp" name="minp" required>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="card card-body">
+                    <div class="form-group  row">
+                        <div class="col-sm">
+                            <label for="thalach">Maximum visibility</label>
+                            <input type="number" class="form-control" id="maxv" name="maxv" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Mean visibility</label>
+                            <input type="number" class="form-control" id="meanv" name="meanv" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Minimum visibility</label>
+                            <input type="number" class="form-control" id="minv" name="minv" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Max wind speed (mph)</label>
+                            <input type="number" class="form-control" id="maxw" name="maxw" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Mean wind speed (mph)</label>
+                            <input type="number" class="form-control" id="meanw" name="meanw" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Min wind speed (mph)</label>
+                            <input type="number" class="form-control" id="minw" name="minw" required>
+                        </div>
+                    </div>
+                </div>
+                <br>
+
+                <div class="card card-body">
+                    <div class="form-group  row">
+                        <div class="col-sm">
+                            <label for="thalach">Precipitation (inches)</label>
+                            <input type="number" class="form-control" id="prep" name="prep" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Cloud Cover</label>
+                            <input type="number" class="form-control" id="cld" name="cld" required>
+                        </div>
+                        <div class="col-sm">
+                            <label for="thalach">Wind Direction (degrees)</label>
+                            <input type="number" class="form-control" id="deg" name="deg" required>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="card card-body">
+                    <div class="col-sm-3">
+                        <label for="sex">Zip Code (Select same as city above)</label>
+                        <select class="form-control" id="zip" name="zip" required>
+                            <option disabled selected value> -- Select an Option -- </option>
+                            <option value="94107">94107 (San Francisco)</option>
+                            <option value="94063">94063 (Red Wood))</option>
+                            <option value="94041">94041 (Mountain View)</option>
+                            <option value="95113">95113 (San Jose)</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div class="card card-body">
+                    <div class="form-group  row">
+
+                        <div class="col-sm-3">
+                            <label for="sex">Fog</label>
+                            <select class="form-control" id="fog" name="fog" required>
+                                <option disabled selected value> -- Select an Option -- </option>
+                                <option value="0">False</option>
+                                <option value="1">True</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="sex">Fog Rain</label>
+                            <select class="form-control" id="fograin" name="fograin" required>
+                                <option disabled selected value> -- Select an Option -- </option>
+                                <option value="0">False</option>
+                                <option value="1">True</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="sex">Rain</label>
+                            <select class="form-control" id="rain" name="rain" required>
+                                <option disabled selected value> -- Select an Option -- </option>
+                                <option value="0">False</option>
+                                <option value="1">True</option>
+                            </select>
+                        </div>
+                        <div class="col-sm-3">
+                            <label for="sex">Thunderstorm</label>
+                            <select class="form-control" id="thunderstorm" name="thunderstorm" required>
+                                <option disabled selected value> -- Select an Option -- </option>
+                                <option value="0">False</option>
+                                <option value="1">True</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <br>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit" value="Result">
+                </div>
+
+                <!--Prediction Result-->
+                <div id="result">
+                    <strong style="color:red">{{result}}</strong>
+                </div>
+    </div>
+    </fieldset>
+    </form>
+
+    </div>
+
+</body>
+
+</html>
